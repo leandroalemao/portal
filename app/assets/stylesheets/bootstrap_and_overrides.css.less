@@ -1,0 +1,123 @@
+@import "twitter/bootstrap/bootstrap";
+
+body { padding-top: 60px; }
+
+@import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+@iconSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings");
+@iconWhiteSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings-white");
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+// Note: If you use asset_path() here, your compiled bootstrap_and_overrides.css will not
+//       have the proper paths. So for now we use the absolute path.
+@fontAwesomeEotPath: asset-path("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: asset-path("fontawesome-webfont.eot#iefix");
+@fontAwesomeWoffPath: asset-path("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: asset-path("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: asset-path("fontawesome-webfont.svg");
+
+// Font Awesome
+@import "fontawesome";
+
+// Glyphicons
+//@import "twitter/bootstrap/sprites.less";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
+//
+// Example:
+// @linkColor: #ff0000;
+
+@navbarBackground: #555;
+@navbarBackgroundHighlight: #888;
+@navbarText: #eee;
+@navbarLinkColor: #eee;
+
+.navbar .brand {
+  float: left;
+  display: block;
+  height: 20px;
+  width: 10px;
+  // Vertically center the text given @navbarHeight
+  padding: ((@navbarHeight - @baseLineHeight) / 2) 20px ((@navbarHeight - @baseLineHeight) / 2);
+  margin-left: -5px; // negative indent to left-align the text down the page
+  font-size: 20px;
+  font-weight: 100;
+  color: #FAFFB8;
+  text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+  background: url('claro.png') no-repeat center center;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.footer 
+{
+    position: relative;
+	margin-top: 30px; /* negative value of footer height */
+	height: 50px;
+	clear:both;
+    padding-top:20px;
+    color:#555;
+    background-color:#c2c2c2;
+} 
+
+.simple_form label {
+  float: left;
+  width: 100px;
+  text-align: right;
+  margin: 2px 10px;
+}
+
+.simple_form div.input {
+  margin-bottom: 20px;
+}
+
+.simple_form div.boolean, .simple_form input[type='submit'] {
+  float: left;
+  margin-left: 0px;
+  margin: 2px 10px;
+}
+
+.simple_form div.boolean label {
+  float: none;
+  margin: 0;
+}
+
+.table.display {
+  margin: 0 auto;
+  width: 100%;
+  clear: both;
+  border-collapse: collapse;
+  table-layout: fixed; // ***********add this 
+  word-wrap:break-word; // ***********and this 
+}
+
+ul.ui-autocomplete {
+  position: absolute;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: solid 1px #999;
+  cursor: default;
+  li {
+    background-color: #FFF;
+    border-top: solid 1px #DDD;
+    margin: 0;
+    padding: 0;
+    a {
+      color: #000;
+      display: block;
+      padding: 3px;
+    }
+    a.ui-state-hover, a.ui-state-active {
+      background-color: #FFFCB2;
+    }
+  }
+}
