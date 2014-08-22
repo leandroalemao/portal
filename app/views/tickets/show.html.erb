@@ -1,0 +1,29 @@
+<%- model_class = Ticket -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= t("inicial.campos.nome") %>:</strong></dt>
+  <dd><%= @ticket.nome %></dd>
+  <dt><strong><%= t("inicial.campos.responsavel") %>:</strong></dt>
+  <dd><%= @ticket.responsavel %></dd>
+  <dt><strong><%= t("inicial.campos.descricao") %>:</strong></dt>
+  <dd><%= @ticket.descricao %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              tickets_path, :class => 'btn'  %>
+
+  <% if can? :update, @ticket %>
+      <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                  edit_ticket_path(@ticket), :class => 'btn' %>
+      <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                  ticket_path(@ticket),
+                  :method => 'delete',
+                  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                  :class => 'btn btn-danger' %>
+   <% end %>
+
+</div>

@@ -1,0 +1,4 @@
+<%= div_for comment, data: {id: comment.id} do %>
+  <p><strong><%= comment.user.try(:name) %></strong> comentou em <strong><%= comment.created_at.strftime("%d/%m/%Y às %H:%Mh. :") %></strong></p>
+  <%= simple_format comment.description %>
+<% end %>

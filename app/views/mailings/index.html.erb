@@ -1,0 +1,79 @@
+<%- model_class = Mailing -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+  
+  <%= link_to(mailings_url(format: "html", :statusvisual => '0'), class: 'btn btn-primary') do %>
+        <%= content_tag('i', nil, class: 'icon-fire') %> <%= t("helpers.index.novos") %>
+    <% end %>
+  <%= link_to(mailings_url(format: "html", :statusvisual => '1'), class: 'btn btn-danger') do %>
+        <%= content_tag('i', nil, class: 'icon-play') %> <%= t("helpers.index.demandados") %>
+    <% end %>
+  <%= link_to(mailings_url(format: "html", :statusvisual => '2'), class: 'btn btn-warning') do %>
+        <%= content_tag('i', nil, class: 'icon-glass') %> <%= t("helpers.index.entregues") %>
+    <% end %>
+  <%= link_to(mailings_url(format: "html", :statusvisual => '3'), class: 'btn btn-success') do %>
+        <%= content_tag('i', nil, class: 'icon-ok-circle') %> <%= t("helpers.index.finalizados") %>
+    <% end %>
+
+    <% if params[:statusvisual] == '0' %>
+          <h3><%= t("helpers.index.novos") %></h3>
+    <% elsif params[:statusvisual] == '1' %>
+          <h3><%= t("helpers.index.demandados") %></h3>
+    <% elsif params[:statusvisual] == '2' %>
+          <h3><%= t("helpers.index.entregues") %></h3>
+    <% elsif params[:statusvisual] == '3' %>
+          <h3><%= t("helpers.index.finalizados") %></h3> 
+    <% else %>
+          <h3><%= t("helpers.index.novos") %></h3>                         
+    <% end %>
+
+<table id="mailings" style="font-weight: bold; font-size: 11px;" class="table table-striped" data-source="<%= mailings_url(format: "json", :statusvisual => params[:statusvisual]) %>">
+  
+  <thead>
+    <tr>
+      <th><%= t('inicial.campos.id') %></th>
+      <th>Demanda</th>
+      <th>Abordagem</th>
+      <th>Objetivo</th>
+      <th>Descrição</th>
+      <th><%= t('inicial.campos.created_at') %></th>
+      <th><%= t('inicial.campos.updated_at') %></th>
+      <th><%= t('inicial.campos.created_by') %></th>
+      <th><%= t('inicial.campos.rlowner_id') %></th>
+      <th><%= t('inicial.campos.status') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @mailings.each do |mailing| %>
+      <tr>
+        <td><%= link_to mailing.id, mailing_path(mailing) %></td>
+        <td><%= mailing.typemailing %></td>
+        <td><%= mailing.approach %></td>
+        <td><%= mailing.objective %></td>
+        <td><%= mailing.description %></td>
+        <td><%= mailing.created_at %></td>
+        <td><%= mailing.updated_at %></td>
+        <td><%= mailing.user.try(:name) %></td>
+        <% @usuario = User.find(:all, :conditions => {:id => mailing.rlowner_id}) %>
+        <%  @usuario.each do |usuarios| %>
+          <td><%= usuarios.try(:name) %></td>
+        <%  end %>
+        <td>
+          <%= 
+        case mailing.try(:status) 
+             when 0 then 'Novo'
+             when 1 then 'Demandado'
+             when 2 then 'Entregue'
+             when 3 then 'Finalizado'
+        end
+          %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+    </div>
+</div>

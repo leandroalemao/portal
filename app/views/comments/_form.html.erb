@@ -1,0 +1,23 @@
+<h3>Novo Comentário:</h3>
+<%= form_for [@mailing, @comment] do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_area :description, rows: 8, cols: 30, :placeholder => 'Digite aqui o seu comentário' %>
+  </div>
+  <div class="actions">
+    <%= button_tag(type: 'submit', class: "btn btn-small btn-primary") do %>
+        <i class="icon-ok icon-white"></i><b> <%= t("helpers.submit.submitcomment") %></b>
+    <% end %>    
+  </div>
+<% end %>

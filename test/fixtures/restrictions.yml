@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  optin: 1
+  optout: 1
+  inadimplente: 1
+  funcionario: 1
+  procon: 1
+  aca: 1
+  triplea: 1
+  corp: 1
+  suspenso: 1
+  mailing_id: 1
+
+two:
+  optin: 1
+  optout: 1
+  inadimplente: 1
+  funcionario: 1
+  procon: 1
+  aca: 1
+  triplea: 1
+  corp: 1
+  suspenso: 1
+  mailing_id: 1

@@ -1,0 +1,20 @@
+<%= simple_form_for(@restriction) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :optin %>
+    <%= f.input :optout %>
+    <%= f.input :inadimplente %>
+    <%= f.input :funcionario %>
+    <%= f.input :procon %>
+    <%= f.input :aca %>
+    <%= f.input :triplea %>
+    <%= f.input :corp %>
+    <%= f.input :suspenso %>
+    <%= f.input :mailing_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
